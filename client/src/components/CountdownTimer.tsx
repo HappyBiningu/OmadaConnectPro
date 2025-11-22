@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import { Clock } from "lucide-react";
 
 export function CountdownTimer() {
-  // 2 hours in seconds
-  const TWO_HOURS = 2 * 60 * 60;
+  // 1 hour in seconds
+  const ONE_HOUR = 1 * 60 * 60;
   
   const [timeLeft, setTimeLeft] = useState(() => {
     const saved = localStorage.getItem("wifi_timer");
@@ -15,10 +15,10 @@ export function CountdownTimer() {
       return savedTime - now;
     }
     
-    // Set expire time 2 hours from now
-    const expireTime = now + TWO_HOURS;
+    // Set expire time 1 hour from now
+    const expireTime = now + ONE_HOUR;
     localStorage.setItem("wifi_timer", expireTime.toString());
-    return TWO_HOURS;
+    return ONE_HOUR;
   });
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export function CountdownTimer() {
           <motion.div 
             className="h-full bg-primary shadow-[0_0_10px_var(--color-primary)]"
             initial={{ width: "100%" }}
-            animate={{ width: `${(timeLeft / TWO_HOURS) * 100}%` }}
+            animate={{ width: `${(timeLeft / ONE_HOUR) * 100}%` }}
             transition={{ ease: "linear", duration: 1 }}
           />
         </div>
